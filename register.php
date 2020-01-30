@@ -37,10 +37,13 @@ if (isset($_POST["register"])) {
 <body>
     <nav>
         <h1>
-            Create your account...
+            Login System
         </h1>
     </nav>
     <div class="container  display-flex flex-center direction-column">
+        <h3>
+            Create your account...
+        </h3>
         <?php if (isset($_POST["register"]) && isset($failed_msg)) : ?>
             <p class="error-msg">
                 <?php echo $failed_msg; ?>
@@ -51,10 +54,10 @@ if (isset($_POST["register"])) {
                 <input type="text" placeholder="Username" name="uname">
             </div>
             <div>
-                <input type="passoword" placeholder="password" name="pass_1">
+                <input type="password" placeholder="password" name="pass_1">
             </div>
             <div>
-                <input type="passoword" placeholder="confirm password" name="pass_2">
+                <input type="password" placeholder="confirm password" name="pass_2">
             </div>
             <div>
                 <input type="submit" name="register">

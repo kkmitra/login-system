@@ -22,7 +22,7 @@ class Parser
     {
         $parsed_data = array();
         foreach ($this->get_lines() as $line) {
-            preg_match("/^([A-Za-z]+)\|(\d+)$/", trim($line), $matches);
+            preg_match("/^([A-Za-z ]+)\|(\d+)$/", trim($line), $matches);
             if (!empty($matches)) {
                 array_push($parsed_data, array(
                     "subject" => $matches[1],

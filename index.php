@@ -30,7 +30,7 @@ if (isset($_POST["login"])) {
 <?php if (isset($_SESSION["username"])) : ?>
     <nav>
         <a href="/index.php">
-            <h1>Problem 7</h1>
+            <h1>Login System</h1>
         </a>
         <div class="links">
             <a href="userInfo.php" class="info-btn">Details...</a>
@@ -79,7 +79,7 @@ if (isset($_POST["login"])) {
 
 <?php else : ?>
     <nav>
-        <h1>Problem 7</h1>
+        <h1>Login System</h1>
     </nav>
     <div class="container display-flex flex-center direction-column">
         <?php if (isset($_POST["login"]) && isset($failed_msg)) : ?>
@@ -89,9 +89,9 @@ if (isset($_POST["login"])) {
         <?php endif; ?>
         <form action="index.php" method="POST" class="login-form">
             <input type="text" placeholder="username" name="username">
-            <input type="text" placeholder="username" name="password">
+            <input type="password" placeholder="password" name="password">
             <input type="submit" value="Submit" name="login">
         </form>
-        <a href="/register.php">Register...</a>
+        <a href="/register.php" class="btn">Register...</a>
     </div>
 <?php endif; ?>

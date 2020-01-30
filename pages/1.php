@@ -4,6 +4,7 @@ require "./validators/UsernameValidator.php";
 
 $first_name = $_SESSION['first_name'] ?? '';
 $last_name = $_SESSION['last_name'] ?? '';
+$full_name = $_SESSION['full_name'] ?? '';
 
 if (isset($_POST["submit"])) {
   $userNameValidator = new UsernameValidator($_POST);
@@ -37,9 +38,22 @@ if (isset($_POST["submit"])) {
   </div>
   <div>
     <label for="fullName">Full Name</label>
-    <input type="text" id="fullName" disabled value="<?php echo $GLOBALS['full_name'] ?>">
+    <input type="text" id="fullName" disabled value="<?php echo $full_name ?>">
   </div>
   <div>
     <input type="submit" value="Submit" name="submit">
   </div>
 </form>
+
+<script>
+    document.getElementById("firstName").addEventListener("keyup", function(e) {
+      document.getElementById("fullName").value =
+        document.getElementById("firstName").value + " " +
+        document.getElementById("lastName").value
+    })
+    document.getElementById("lastName").addEventListener("keyup", function(e) {
+      document.getElementById("fullName").value =
+        document.getElementById("firstName").value + " " +
+        document.getElementById("lastName").value
+    })
+  </script>

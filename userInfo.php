@@ -1,6 +1,6 @@
 <nav>
     <a href="index.php">
-        <h1>Problem 7</h1>
+        <h1>Login System</h1>
     </a>
     <div class="links">
         <a href="userInfo.php" class="info-btn">Details...</a>
@@ -20,8 +20,8 @@ $greet_msg = "Welcome " . $_SESSION["full_name"] ?? '';
 $full_name = $_SESSION["full_name"] ?? '';
 $imagePath = $_SESSION["image_path"] ?? '';
 $marks = $_SESSION["marks"] ?? '';
-$phone_no = $_SESSION["phone_no"] ?? '';
-$email = $_SESSION["email"] ?? '';
+$phone_no = $_SESSION["phone_no"] ?? 'contact no: xxx xxx xxxx';
+$email = $_SESSION["email"] ?? 'email: xxx@xxx.com';
 
 ?>
 
@@ -42,18 +42,22 @@ $email = $_SESSION["email"] ?? '';
 
 <body>
     <div class="container">
-        <?php if (isset($_SESSION["full_name"])) : ?>
-            <div class="greet-msg display-flex flex-center">
+        <div class="greet-msg display-flex flex-center">
+            <?php if ($imagePath != '') : ?>
                 <div class="profile-pic">
                     <img src="<?php echo $imagePath ?>" alt="">
                 </div>
-                <div class="msg-body">
+            <?php endif; ?>
+            <div class="msg-body">
+                <?php if ($full_name != '') : ?>
                     <h1>Welcome</h1>
                     <p class="big"><?php echo $full_name ?></p>
                     <p class="small"><?php echo $phone_no ?></p>
                     <p class="small"><?php echo $email ?></p>
-                </div>
+                <?php endif; ?>
             </div>
+        </div>
+        <?php if ($marks != '') : ?>
             <div class="marks-section">
                 <h2>Marks...</h2>
                 <table>
@@ -75,6 +79,8 @@ $email = $_SESSION["email"] ?? '';
                     </tbody>
                 </table>
             </div>
+        <?php else : ?>
+            <p class="container display-flex flex-center ">Nothing to show...</p>
         <?php endif; ?>
     </div>
 

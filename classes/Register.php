@@ -19,14 +19,20 @@ class Register extends Model
     {
 
         if (!$this->validate($username, $password)) {
-            $this->error_msg = "username should not be empty";
+            $this->error_msg = "username or password should not be empty";
             return false;
         }
+
+        // $uname = $this->conn->real_escape_string($username);
+        // $pass =  $this->conn->real_escape_string($password);
+
+        $uname = htmlspecialchars($username);
+        $pass = htmlspecialchars($password);
 
         if (!$this->insertData(
             "insert into users values(?, ?)",
             "ss",
-            array($username, $password)
+            array($uname, $pass)
         )) {
             $this->error_msg = "User already exists....";
             return false;
